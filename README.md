@@ -1,3 +1,5 @@
+Will be done in 5-12-2025
+
 # rick-and-morty
 Technical Task
 Please complete the following technical task carefully using this API provider site https://rickandmortyapi.com/documentation/.
