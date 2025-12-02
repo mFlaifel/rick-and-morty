@@ -40,11 +40,19 @@ export const CharactersPage = () => {
   }
 
   if (isError) {
+    const errorMessage = query
+      ? `Failed to search for "${query}". Please check your connection and try again.`
+      : 'Failed to load characters. Please try again.';
+
     return (
       <div className='min-h-screen p-6'>
         <h1 className='text-3xl font-bold mb-6'>Characters</h1>
         <SearchBar />
-        <ErrorDisplay error={error as Error} retry={() => refetch()} />
+        <ErrorDisplay
+          error={error as Error}
+          retry={() => refetch()}
+          message={errorMessage}
+        />
       </div>
     );
   }
