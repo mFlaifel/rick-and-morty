@@ -6,8 +6,13 @@ export const rmApi = axios.create({
   baseURL: API_BASE,
 });
 
+type FetchCharactersParams = {
+  page?: number;
+  name?: string;
+};
+
 export const fetchCharacters = async (page = 1, name?: string) => {
-  const params: Record<string, any> = { page };
+  const params: FetchCharactersParams = { page };
   if (name) params.name = name;
 
   const { data } = await rmApi.get('/character', { params });

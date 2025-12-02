@@ -1,5 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { fetchCharacters } from '../api/rmApi';
+import { queryKeys } from '../lib/queryKeys';
 import type { Character } from '../types';
 
 type CharactersResponse = {
@@ -14,7 +15,9 @@ type CharactersResponse = {
 
 export const useCharacters = (page = 1, name?: string) => {
   return useQuery<CharactersResponse>({
-    queryKey: ['characters', page, name],
+    queryKey: queryKeys.characters.list(page, name),
     queryFn: () => fetchCharacters(page, name),
+    placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 };
