@@ -12,4 +12,5 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+   base: "/rick-and-morty/",
 });
